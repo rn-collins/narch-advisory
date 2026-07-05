@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NARCH — Neuroarchitecture Advisory | Evidence-Based Built Environments</title>
+  <meta name="description" content="NARCH grounds architectural design decisions in peer-reviewed neuroscience. The Biophilic Evidence Audit delivers citations usable in client presentations, grant filings, and public approvals." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --nsag: #4D45A8;
+      --nsag-light: #6B63C4;
+      --nsag-pale: #EEF0FF;
+      --bg: #F6F3EC;
+      --text: #1C1B1F;
+      --text-muted: #5A5869;
+      --border: #D8D5CE;
+      --white: #FFFFFF;
+      --brand: #8B6914;
+      --brand-light: #A67D1A;
+      --brand-pale: #F8F3E8;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Manrope', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .nav-back {
+      font-family: 'Syne', sans-serif;
+      font-weight: 500;
+      font-size: 0.8125rem;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-back:hover {
+      color: var(--nsag);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background-color: var(--brand);
+      color: var(--white);
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .hero-inner {
+      max-width: 780px;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: block;
+    }
+
+    .hero .section-label {
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2.5rem, 6vw, 4.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.75rem;
+      color: var(--white);
+    }
+
+    .hero-sub {
+      font-family: 'Manrope', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.125rem);
+      font-weight: 300;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 640px;
+      margin-bottom: 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.8125rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.875rem 2rem;
+      border-radius: 2px;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-white {
+      background-color: var(--white);
+      color: var(--brand);
+    }
+
+    .btn-white:hover {
+      background-color: var(--brand-pale);
+    }
+
+    .btn-brand {
+      background-color: var(--brand);
+      color: var(--white);
+    }
+
+    .btn-brand:hover {
+      background-color: var(--brand-light);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 3rem);
+    }
+
+    .section-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .about-section {
+      background-color: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-section .section-label {
+      color: var(--brand);
+      border-left: 3px solid var(--brand);
+      padding-left: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .about-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 2rem;
+    }
+
+    .about-section p {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 1.375rem;
+    }
+
+    .about-section p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ── OFFER ── */
+    .offer-section {
+      background-color: var(--brand-pale);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .offer-section .section-label {
+      color: var(--brand);
+      border-left: 3px solid var(--brand);
+      padding-left: 0.75rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .offer-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(2rem, 4.5vw, 3rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .offer-description {
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 2.75rem;
+      max-width: 620px;
+    }
+
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 3rem;
+      background-color: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .pricing-table thead tr {
+      background-color: var(--brand);
+      color: var(--white);
+    }
+
+    .pricing-table thead th {
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.6875rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.875rem 1.25rem;
+      text-align: left;
+    }
+
+    .pricing-table thead th:last-child {
+      text-align: right;
+    }
+
+    .pricing-table tbody tr {
+      border-top: 1px solid var(--border);
+      transition: background-color 0.15s ease;
+    }
+
+    .pricing-table tbody tr:hover {
+      background-color: var(--brand-pale);
+    }
+
+    .pricing-table tbody td {
+      padding: 1.125rem 1.25rem;
+      vertical-align: top;
+    }
+
+    .pricing-table .tier-name {
+      font-family: 'Manrope', sans-serif;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      color: var(--text);
+    }
+
+    .pricing-table .tier-price {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--brand);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background-color: #1C1B1F;
+      color: rgba(255, 255, 255, 0.55);
+      padding: 3rem clamp(1.25rem, 5vw, 3rem);
+      text-align: center;
+    }
+
+    .footer-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 0.875rem;
+      letter-spacing: 0.1em;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 0.75rem;
+    }
+
+    footer p {
+      font-family: 'Manrope', sans-serif;
+      font-size: 0.8125rem;
+      line-height: 1.9;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.65);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 600px) {
+      .pricing-table thead th,
+      .pricing-table tbody td {
+        padding: 0.875rem 0.875rem;
+      }
+
+      .pricing-table .tier-name {
+        font-size: 0.875rem;
+      }
+
+      .pricing-table .tier-price {
+        font-size: 0.875rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">NARCH</a>
+    <a href="https://nsag-site.vercel.app" class="nav-back">&#8592; NSAG</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="section-label">Neuroarchitecture Advisory</span>
+      <h1>The Built Environment Is Governance.</h1>
+      <p class="hero-sub">Physical space determines what is cognitively and physiologically possible within it. Most architecture firms know this intuitively. Almost none have a framework for making it evidential — usable in client presentations, grant filings, and public approvals.</p>
+      <a class="btn btn-white" href="https://outlook.office.com/bookwithme/user/3ff7c8299177431a8fc2b099238c5e43@northeastern.edu?anonymous&ismsaljsauthenabled&ep=plink" target="_blank" rel="noopener">Book a Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section">
+    <div class="section-inner">
+      <span class="section-label">About</span>
+      <h2>Six Hundred Studies. One Usable Framework.</h2>
+      <p>Six hundred studies confirm what architects already sense: the built environment is not a neutral backdrop for human activity. It regulates stress, cognition, healing, productivity, and social cohesion at the biological level. NARCH makes that evidence usable.</p>
+      <p>The Biophilic Evidence Audit grounds specific design interventions in peer-reviewed neuroscience and environmental psychology research. The output is a document your team can put in front of a client, a grant committee, or a public planning board — with citations.</p>
+      <p>NARCH operates at the intersection of NSAG's M5 (Biophilic Civic Infrastructure), M7 (Conscious Cities), and M10 (Healthcare Built Environment) — three modules that represent a combined governance opportunity across municipal planning, healthcare architecture, and civic design.</p>
+    </div>
+  </section>
+
+  <!-- OFFER -->
+  <section class="offer-section">
+    <div class="section-inner">
+      <span class="section-label">The Engagement</span>
+      <h2>The Biophilic Evidence Audit</h2>
+      <p class="offer-description">A 20-page evidence brief grounding your specific design interventions in peer-reviewed neuroscience and environmental psychology, with citations usable in client presentations, grant applications, and public filings.</p>
+
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>Engagement</th>
+            <th>Investment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name">Single Project Evidence Brief</td>
+            <td class="tier-price">$3,500</td>
+          </tr>
+          <tr>
+            <td class="tier-name">Evidence Brief + 2-hr Design Advisory</td>
+            <td class="tier-price">$5,500</td>
+          </tr>
+          <tr>
+            <td class="tier-name">Ongoing Research Partner (1 project/quarter)</td>
+            <td class="tier-price">$2,000 / month</td>
+          </tr>
+          <tr>
+            <td class="tier-name">Firm Workshop (half-day, up to 12 staff)</td>
+            <td class="tier-price">$5,000</td>
+          </tr>
+          <tr>
+            <td class="tier-name">Annual Research Partner (up to 4 projects)</td>
+            <td class="tier-price">$20,000 / year</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <a class="btn btn-brand" href="https://outlook.office.com/bookwithme/user/3ff7c8299177431a8fc2b099238c5e43@northeastern.edu?anonymous&ismsaljsauthenabled&ep=plink" target="_blank" rel="noopener">Book a Discovery Call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <p class="footer-brand">NARCH</p>
+      <p>NARCH is an NSAG applied brand. <a href="https://nsag-site.vercel.app" target="_blank" rel="noopener">nsag-site.vercel.app</a> &middot; RN Collins, M.S., J.D. Candidate &middot; collins.ra@northeastern.edu</p>
+    </div>
+  </footer>
+
+</body>
+</html>
