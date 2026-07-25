@@ -433,5 +433,132 @@
     </div>
   </footer>
 
+
+<section style="background:#f9f7f4;padding:5rem 2rem;border-top:2px solid #1B7A68">
+  <div style="max-width:680px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Free Diagnostic</p>
+    <h2 style="font-size:1.8rem;font-weight:700;margin:0 0 .75rem">Readiness Assessment</h2>
+    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Five questions. Instant result. No email required.</p>
+    <div id="rd-quiz-narch">
+      <div id="rd-questions-narch"></div>
+      <button id="rd-submit-narch" onclick="rdSubmit_narch()" style="display:none;background:#1B7A68;color:#fff;border:none;padding:.75rem 2rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;border-radius:2px;margin-top:1.5rem">Get My Score</button>
+    </div>
+  </div>
+</section>
+<script>
+(function() {
+  var qs = [{"q": "Does your organization document the cognitive and physiological rationale for design decisions in client-facing materials?", "opts": [{"label": "No \u2014 we rely on intuition and precedent", "score": 0}, {"label": "Sometimes \u2014 for specific project types", "score": 1}, {"label": "Yes \u2014 we have an evidence documentation process", "score": 2}]}, {"q": "Can your team cite primary research when a client or regulator asks why a specific design choice was made?", "opts": [{"label": "Not typically \u2014 we reference general best practices", "score": 0}, {"label": "For some decisions, yes", "score": 1}, {"label": "Yes \u2014 we maintain a referenced design rationale", "score": 2}]}, {"q": "How does your organization assess whether a completed space produces its intended cognitive or physiological effects?", "opts": [{"label": "We don't \u2014 occupant satisfaction surveys at most", "score": 0}, {"label": "Informally, through post-occupancy feedback", "score": 1}, {"label": "Through a structured post-occupancy evaluation with measurable outcomes", "score": 2}]}, {"q": "When preparing grant applications or public approvals, how do you substantiate claims about the built environment's effects?", "opts": [{"label": "General references to wellbeing and design quality", "score": 0}, {"label": "Selected research citations, not systematically compiled", "score": 1}, {"label": "A documented evidence brief with graded citations", "score": 2}]}, {"q": "Does your firm have a framework for distinguishing evidence-based design claims from design preferences?", "opts": [{"label": "No formal distinction", "score": 0}, {"label": "Informal \u2014 individual designers make this judgment", "score": 1}, {"label": "Yes \u2014 documented criteria applied consistently", "score": 2}]}];
+  var answers_narch = {};
+  var container = document.getElementById('rd-questions-narch');
+  if (!container) return;
+  qs.forEach(function(q, i) {
+    var div = document.createElement('div');
+    div.style.cssText = 'margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid #ddd';
+    div.innerHTML = '<p style="font-weight:600;margin:0 0 1rem">' + (i+1) + '. ' + q.q + '</p>' +
+      q.opts.map(function(o, j) {
+        return '<label style="display:block;padding:.6rem .8rem;margin-bottom:.4rem;border:1.5px solid #ddd;border-radius:3px;cursor:pointer;font-size:.88rem"><input type="radio" name="qnarch'+i+'" value="'+j+'" style="margin-right:.6rem" onchange="rdAns_narch('+i+','+o.score+')"> '+o.label+'</label>';
+      }).join('');
+    container.appendChild(div);
+  });
+  document.getElementById('rd-submit-narch').style.display = 'block';
+})();
+
+window.rdAns_narch = function(qi, score) { rdAnswers_narch[qi] = score; };
+var rdAnswers_narch = {};
+
+window.rdSubmit_narch = function() {
+  var total = 0, answered = 0;
+  for (var k in rdAnswers_narch) { total += rdAnswers_narch[k]; answered++; }
+  if (answered < 5) { alert('Please answer all 5 questions.'); return; }
+  var pct = Math.round((total / 10) * 100);
+  var level = pct >= 80 ? 'Advanced' : pct >= 50 ? 'Developing' : 'Early Stage';
+  var color = pct >= 80 ? '#1B7A68' : pct >= 50 ? '#B8842A' : '#c0392b';
+  var msgs = {
+    high: 'Your NARCH governance is evidence-aware. The opportunity is systematizing what you already know intuitively into a documented, transferable framework.',
+    mid: 'You have foundational awareness but governance decisions are likely still being made on intuition. The gap between knowing and evidencing is where NSAG work lives.',
+    low: 'Most NARCH organizations score here. Governance decisions affecting the nervous system are being made without a framework for identifying, measuring, or communicating their effects.'
+  };
+  var msg = pct >= 80 ? msgs.high : pct >= 50 ? msgs.mid : msgs.low;
+  document.getElementById('rd-quiz-narch').innerHTML =
+    '<div style="text-align:center;padding:2rem">' +
+    '<div style="font-size:3rem;font-weight:800;color:'+color+'">'+pct+'%</div>' +
+    '<p style="font-size:1.1rem;font-weight:600;margin:.5rem 0;color:'+color+'">'+level+'</p>' +
+    '<p style="color:#555;line-height:1.7;max-width:520px;margin:1rem auto">'+msg+'</p>' +
+    '<a href="mailto:collins.ra@northeastern.edu?subject=NARCH+Readiness+Diagnostic+'+pct+'%25" style="display:inline-block;margin-top:1.5rem;background:#1B7A68;color:#fff;text-decoration:none;padding:.65rem 1.5rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;border-radius:2px">Get the Full Report</a>' +
+    '</div>';
+};
+</script>
+<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Signal vs. Noise</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 2rem">What Is Worth Paying Attention To</h2>
+    <div style="display:grid;gap:1.25rem"><div style="border-left:3px solid #1B7A68;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">Signal</p><p style="font-weight:600;margin:0 0 .3rem">Biophilic design outcome studies in hospital settings (2018-2024)</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">The most rigorous evidence for nervous-system effects of built environments comes from healthcare — window views, natural light, acoustic design, and wayfinding clarity all have measurable outcome data applicable to non-healthcare contexts with appropriate translation. Primary sources: HERD, Health Environments Research and Design Journal.</p></div><div style="border-left:3px solid #1B7A68;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">Signal</p><p style="font-weight:600;margin:0 0 .3rem">GSA post-occupancy evaluation standards for federal buildings</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">The U.S. General Services Administration has developed post-occupancy evaluation frameworks that operationalize the connection between space and cognitive/physiological outcomes in ways that translate directly to evidence documentation for design rationale. Primary source: GSA PBS-P100 Facilities Standards.</p></div><div style="border-left:3px solid #c0392b;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Noise</p><p style="font-weight:600;margin:0 0 .3rem">Biophilic design trend reports from furniture and materials vendors</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">These documents cite real research but selection-bias the evidence toward findings that favor their product categories. The underlying studies are often credible; the curation is not neutral. Read the primary sources directly.</p></div><div style="border-left:3px solid #c0392b;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Noise</p><p style="font-weight:600;margin:0 0 .3rem">Wellness certifications as evidence of outcome</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">LEED, WELL, and similar certifications measure inputs and features, not nervous system outcomes. Certification is not evidence that the intended biological effects occurred. It is evidence that specified features were installed.</p></div></div>
+  </div>
+</section>
+<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Before / After</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">What Applying the Framework Looks Like</h2>
+    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Hypothetical examples drawn from real decision types in NARCH.</p>
+    <div style="display:grid;gap:1.5rem">
+<div style="border:1.5px solid #ddd;border-radius:4px;overflow:hidden">
+  <div style="padding:1.25rem;background:#fff4f4;border-bottom:1px solid #ddd">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Before</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Design rationale: Natural light improves wellbeing</p>
+    <p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">A client asks why the firm specified full-spectrum lighting throughout the facility. The answer: natural light improves wellbeing and creates a better work environment. No specific evidence cited. The claim is sincere but unverifiable.</p>
+  </div>
+  <div style="padding:1.25rem;background:#f0f9f6">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">After NSAG Framework</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Evidence-graded rationale with documented sources</p>
+    <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">The same claim is documented with three primary sources: a 2019 HERD study showing 15% reduction in self-reported stress in hospital units with enhanced natural light; a GSA post-occupancy study linking daylight access to a 6% reduction in sick leave; and a 2021 cognitive performance study distinguishing spectrum effects from luminance effects. Confidence grade: B.</p>
+  </div>
+</div>
+<div style="border:1.5px solid #ddd;border-radius:4px;overflow:hidden">
+  <div style="padding:1.25rem;background:#fff4f4;border-bottom:1px solid #ddd">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Before</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Grant application: Evidence-based design approach</p>
+    <p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">A public-sector client asks for evidence supporting the design approach. The firm provides a section titled Evidence-Based Design that cites three books and references decades of research. The grant reviewer cannot verify any specific claim.</p>
+  </div>
+  <div style="padding:1.25rem;background:#f0f9f6">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">After NSAG Framework</p>
+    <p style="font-weight:600;margin:0 0 .35rem">Citation-graded evidence brief, reviewer-ready</p>
+    <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">The same section now contains five primary studies organized by design element, each with full citation, evidence grade, and a one-sentence annotation explaining relevance to this project. The grant reviewer can verify every citation in under ten minutes.</p>
+  </div>
+</div></div>
+  </div>
+</section>
+<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Terminology</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">NARCH Glossary</h2>
+    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Language used precisely in this domain. These distinctions carry real analytical weight.</p>
+    <div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Cognitive affordance</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">A design feature that actively shapes what cognitive operations are easy, difficult, or impossible in a space. Distinct from aesthetic preference — a cognitive affordance has a measurable effect on attention, working memory, or stress regulation.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Restorative environment</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">A space that reliably reduces attentional fatigue and stress load over time. Defined in Attention Restoration Theory (Kaplan and Kaplan, 1989) with reference to four properties: being away, extent, fascination, and compatibility. Not synonymous with relaxing.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Thermal comfort vs. thermal preference</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">Thermal comfort is an objective measure of the range within which the body maintains homeostasis without active thermoregulation. Thermal preference is subjective. Both matter to design; they are not the same measure and are often conflated in post-occupancy surveys.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Acoustic masking</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">A deliberate introduction of background sound to reduce the intelligibility of distracting speech — distinct from noise reduction and soundproofing. Each has different nervous system effects and different evidence bases.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Biophilic density</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">The ratio of nature-referencing elements (direct: living plants, water; indirect: natural patterns, materials; spatial: refuge, prospect) to total square footage. An operational measure for comparing design intensity to outcome expectations in the research literature.</p></div></div>
+  </div>
+</section>
+<section style="background:#1B7A68;color:#fff;padding:4rem 2rem">
+  <div style="max-width:780px;margin:0 auto">
+    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6);margin:0 0 .75rem">How NSAG Thinks</p>
+    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 1rem;color:#fff">One Framework. Four Domains.</h2>
+    <p style="color:rgba(255,255,255,.85);line-height:1.8;margin:0 0 2rem;max-width:620px">NSAG applies the same underlying question to every domain: <em>What are the nervous system inputs that governance decisions are actually regulating — and does the governing body know it?</em> The answer changes by domain. The method does not.</p>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">NARCH</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Built environments govern cognition, stress, and healing at the architectural level</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">WNH</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Clinical and policy guidance governs female nervous system inputs, often without knowing it</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">GAPI</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">AI agents govern the cognitive and emotional states of every person they interact with</p>
+      </div>
+      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
+        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">SPORT</p>
+        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Sports organizations regulate athlete nervous systems through scheduling, environment, and culture</p>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>
