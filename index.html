@@ -1,732 +1,156 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NARCH — Neuroarchitecture Advisory | Evidence-Based Built Environments</title>
-  <meta name="description" content="Neuroarchitecture advisory firm NARCH grounds building design in peer-reviewed neuroscience for audit-ready client and grant presentations. Built by RN Collins." />
-  <meta property="og:title" content="NARCH — Neuroarchitecture Advisory | Evidence-Based Built Environments | RN Collins" />
-  <meta property="og:description" content="Neuroarchitecture advisory firm NARCH grounds building design in peer-reviewed neuroscience for audit-ready client and grant presentations. Built by RN Collins." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://narch-advisory.vercel.app" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --nsag: #4D45A8;
-      --nsag-light: #6B63C4;
-      --nsag-pale: #EEF0FF;
-      --bg: #F6F3EC;
-      --text: #1C1B1F;
-      --text-muted: #5A5869;
-      --border: #D8D5CE;
-      --white: #FFFFFF;
-      --brand: #8B6914;
-      --brand-light: #A67D1A;
-      --brand-pale: #F8F3E8;
-    }
-
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      font-family: 'Manrope', sans-serif;
-      font-weight: 400;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 clamp(1.25rem, 5vw, 3rem);
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-brand {
-      font-family: 'Syne', sans-serif;
-      font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: 0.08em;
-      color: var(--brand);
-      text-decoration: none;
-    }
-
-    .nav-back {
-      font-family: 'Syne', sans-serif;
-      font-weight: 500;
-      font-size: 0.8125rem;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 0.375rem;
-      transition: color 0.2s ease;
-    }
-
-    .nav-back:hover {
-      color: var(--nsag);
-    }
-
-    /* ── HERO ── */
-    .hero {
-      background-color: var(--brand);
-      color: var(--white);
-      padding: clamp(4rem, 10vw, 8rem) clamp(1.25rem, 5vw, 3rem);
-    }
-
-    .hero-inner {
-      max-width: 780px;
-    }
-
-    .section-label {
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.6875rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: block;
-    }
-
-    .hero .section-label {
-      color: rgba(255, 255, 255, 0.65);
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: clamp(2.5rem, 6vw, 4.25rem);
-      line-height: 1.08;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.75rem;
-      color: var(--white);
-    }
-
-    .hero-sub {
-      font-family: 'Manrope', sans-serif;
-      font-size: clamp(1rem, 2vw, 1.125rem);
-      font-weight: 300;
-      line-height: 1.75;
-      color: rgba(255, 255, 255, 0.85);
-      max-width: 640px;
-      margin-bottom: 2.5rem;
-    }
-
-    .btn {
-      display: inline-block;
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.8125rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      padding: 0.875rem 2rem;
-      border-radius: 2px;
-      transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-    }
-
-    .btn-white {
-      background-color: var(--white);
-      color: var(--brand);
-    }
-
-    .btn-white:hover {
-      background-color: var(--brand-pale);
-    }
-
-    .btn-brand {
-      background-color: var(--brand);
-      color: var(--white);
-    }
-
-    .btn-brand:hover {
-      background-color: var(--brand-light);
-    }
-
-    /* ── SECTIONS ── */
-    section {
-      padding: clamp(4rem, 8vw, 7rem) clamp(1.25rem, 5vw, 3rem);
-    }
-
-    .section-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .about-section {
-      background-color: var(--bg);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .about-section .section-label {
-      color: var(--brand);
-      border-left: 3px solid var(--brand);
-      padding-left: 0.75rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .about-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 2rem;
-    }
-
-    .about-section p {
-      font-size: 1.0625rem;
-      line-height: 1.8;
-      color: var(--text-muted);
-      margin-bottom: 1.375rem;
-    }
-
-    .about-section p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ── OFFER ── */
-    .offer-section {
-      background-color: var(--brand-pale);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .offer-section .section-label {
-      color: var(--brand);
-      border-left: 3px solid var(--brand);
-      padding-left: 0.75rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .offer-section h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: clamp(2rem, 4.5vw, 3rem);
-      line-height: 1.15;
-      letter-spacing: -0.01em;
-      color: var(--text);
-      margin-bottom: 1.25rem;
-    }
-
-    .offer-description {
-      font-size: 1.0625rem;
-      line-height: 1.8;
-      color: var(--text-muted);
-      margin-bottom: 2.75rem;
-      max-width: 620px;
-    }
-
-    .pricing-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 3rem;
-      background-color: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .pricing-table thead tr {
-      background-color: var(--brand);
-      color: var(--white);
-    }
-
-    .pricing-table thead th {
-      font-family: 'Syne', sans-serif;
-      font-weight: 600;
-      font-size: 0.6875rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      padding: 0.875rem 1.25rem;
-      text-align: left;
-    }
-
-    .pricing-table thead th:last-child {
-      text-align: right;
-    }
-
-    .pricing-table tbody tr {
-      border-top: 1px solid var(--border);
-      transition: background-color 0.15s ease;
-    }
-
-    .pricing-table tbody tr:hover {
-      background-color: var(--brand-pale);
-    }
-
-    .pricing-table tbody td {
-      padding: 1.125rem 1.25rem;
-      vertical-align: top;
-    }
-
-    .pricing-table .tier-name {
-      font-family: 'Manrope', sans-serif;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      color: var(--text);
-    }
-
-    .pricing-table .tier-price {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.9375rem;
-      color: var(--brand);
-      text-align: right;
-      white-space: nowrap;
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background-color: #1C1B1F;
-      color: rgba(255, 255, 255, 0.55);
-      padding: 3rem clamp(1.25rem, 5vw, 3rem);
-      text-align: center;
-    }
-
-    .footer-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .footer-brand {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 0.875rem;
-      letter-spacing: 0.1em;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 0.75rem;
-    }
-
-    footer p {
-      font-family: 'Manrope', sans-serif;
-      font-size: 0.8125rem;
-      line-height: 1.9;
-      color: rgba(255, 255, 255, 0.45);
-    }
-
-    footer a {
-      color: rgba(255, 255, 255, 0.65);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    footer a:hover {
-      color: var(--white);
-      border-color: rgba(255, 255, 255, 0.5);
-    }
-
-    /* ── MOBILE ── */
-    @media (max-width: 600px) {
-      .pricing-table thead th,
-      .pricing-table tbody td {
-        padding: 0.875rem 0.875rem;
-      }
-
-      .pricing-table .tier-name {
-        font-size: 0.875rem;
-      }
-
-      .pricing-table .tier-price {
-        font-size: 0.875rem;
-      }
-    }
-  </style>
-<script src="/_vercel/insights/script.js" defer></script>
-<script src="/_vercel/speed-insights/script.js" defer></script>
-<link rel="sitemap" type="application/xml" href="/sitemap.xml">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "NARCH \u2014 Neuroarchitecture Advisory | Evidence-Based Built Environments", "description": "NARCH \u2014 Neuroarchitecture Advisory | Evidence-Based Built Environments \u2014 NSAG-aligned framework", "url": "https://narch-advisory.vercel.app"}</script>
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NARCH Spatial Evidence Workbench</title>
+<meta name="description" content="A local-first workbench for spatial observation, evidence-aware design hypotheses, accessibility review, prioritization, and post-occupancy measurement.">
+<meta property="og:title" content="NARCH Spatial Evidence Workbench"><meta property="og:description" content="Turn spatial observations into testable, accountable design decisions."><meta property="og:type" content="website"><meta property="og:url" content="https://narch-advisory.vercel.app">
+<link rel="canonical" href="https://narch-advisory.vercel.app"><link rel="sitemap" type="application/xml" href="/sitemap.xml">
 <style>
-@media (max-width:480px){
-  div[style*="position:fixed"][style*="bottom:1.5rem"][style*="right:1.5rem"]{bottom:0.75rem!important;right:0.75rem!important}
-  div[style*="position:fixed"][style*="bottom:1.5rem"][style*="right:1.5rem"] button,
-  div[style*="position:fixed"][style*="bottom:1.5rem"][style*="right:1.5rem"] a{padding:.4rem .75rem!important;font-size:.6rem!important}
-  button[style*="position:fixed"][style*="bottom:24px"][style*="right:24px"]{bottom:12px!important;right:12px!important;padding:7px 12px!important;font-size:11px!important}
-}
+:root{--ink:#17201d;--muted:#607069;--paper:#f5f4ee;--card:#fff;--line:#d9ded9;--green:#145f4b;--mint:#dff2e9;--gold:#b77b20;--red:#a03d34;--blue:#325d88;--r:18px;--shadow:0 18px 50px rgba(19,40,32,.09)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button,a{touch-action:manipulation}a{color:var(--green)}button{cursor:pointer}.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:#fff;padding:.8rem;z-index:99}
+header{position:sticky;top:0;z-index:20;background:rgba(245,244,238,.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}nav{max-width:1280px;margin:auto;padding:.75rem 1.2rem;display:flex;align-items:center;gap:1rem}.brand{font-weight:850;letter-spacing:.12em}.brand small{display:block;color:var(--muted);font-size:.62rem;letter-spacing:.08em}.nav-actions{margin-left:auto;display:flex;gap:.5rem}
+button,.btn{border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--ink);padding:.68rem 1rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.35rem}.primary{background:var(--green);border-color:var(--green);color:#fff}.danger{color:var(--red)}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #76b9a4;outline-offset:2px}
+.hero{max-width:1280px;margin:auto;padding:4.5rem 1.2rem 2.5rem;display:grid;grid-template-columns:1.3fr .7fr;gap:2rem;align-items:end}.eyebrow{font-weight:800;color:var(--green);text-transform:uppercase;letter-spacing:.12em;font-size:.75rem}.hero h1{font-size:clamp(2.7rem,7vw,6.4rem);line-height:.91;letter-spacing:-.06em;margin:.7rem 0 1.2rem;max-width:900px}.hero p{font-size:1.12rem;color:var(--muted);max-width:720px}.boundary{background:#18241f;color:#eaf3ee;border-radius:var(--r);padding:1.3rem}.boundary strong{color:#8de0c1}.boundary p{font-size:.88rem;color:#c6d4ce;margin:.5rem 0 0}
+.shell{max-width:1280px;margin:auto;padding:0 1.2rem 5rem;display:grid;grid-template-columns:250px 1fr;gap:1.4rem}.rail{position:sticky;top:76px;align-self:start;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:.75rem;box-shadow:var(--shadow)}.stepbtn{width:100%;border:0;border-radius:12px;justify-content:flex-start;background:transparent;text-align:left;padding:.75rem}.stepbtn.active{background:var(--mint);color:var(--green)}.stepbtn span{width:1.6rem;height:1.6rem;border:1px solid currentColor;border-radius:50%;display:grid;place-items:center;font-size:.72rem}.rail-stats{border-top:1px solid var(--line);margin-top:.6rem;padding:.8rem .5rem;color:var(--muted);font-size:.82rem}.bar{height:7px;background:#e7ebe8;border-radius:9px;overflow:hidden;margin:.5rem 0}.bar i{display:block;height:100%;background:var(--green);width:0}
+.panel{display:none}.panel.active{display:block}.section-head{display:flex;gap:1rem;justify-content:space-between;align-items:end;margin-bottom:1rem}.section-head h2{font-size:2rem;line-height:1.1;margin:.25rem 0}.section-head p{color:var(--muted);margin:0;max-width:650px}.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:1.3rem;box-shadow:var(--shadow);margin-bottom:1rem}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.field{display:flex;flex-direction:column;gap:.35rem}.field label,.label{font-weight:750;font-size:.82rem}.hint{color:var(--muted);font-size:.78rem}.wide{grid-column:1/-1}input,select,textarea{width:100%;border:1px solid #c9d0cb;background:#fbfcfa;border-radius:11px;padding:.75rem;color:var(--ink)}textarea{min-height:95px;resize:vertical}
+.dimension{display:grid;grid-template-columns:1fr 160px;gap:1rem;border-top:1px solid var(--line);padding:1rem 0}.dimension:first-child{border:0}.dimension h3{margin:0 0 .2rem;font-size:1rem}.dimension p{margin:0;color:var(--muted);font-size:.83rem}.score{display:flex;flex-direction:column;gap:.3rem}.score-output{font-weight:800;color:var(--green)}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem}.chip{border-radius:999px;background:#eef1ee;padding:.45rem .7rem;font-size:.78rem;font-weight:700}.chip.warn{background:#f8e8d5;color:#7b4d0d}.chip.risk{background:#f5dfdc;color:#802f28}.chip.good{background:var(--mint);color:var(--green)}
+.item{border:1px solid var(--line);border-radius:14px;padding:1rem;margin-top:.8rem}.item-head{display:flex;justify-content:space-between;gap:1rem}.item h3{margin:0;font-size:1rem}.item p{color:var(--muted);margin:.25rem 0}.item-meta{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.7rem}.mini{padding:.4rem .65rem;font-size:.74rem}.empty{text-align:center;color:var(--muted);padding:2.4rem;border:1px dashed #bfc8c2;border-radius:14px}
+.dashboard{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}.metric{background:#eef3ef;border-radius:14px;padding:1rem}.metric b{font-size:1.8rem;display:block}.metric span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}.priority{border-left:4px solid var(--blue)}.priority[data-band="Act now"]{border-color:var(--red)}.priority[data-band="Pilot"]{border-color:var(--gold)}.priority[data-band="Monitor"]{border-color:var(--green)}
+.notice{border-left:4px solid var(--gold);background:#fff8ea;padding:1rem;border-radius:0 12px 12px 0;color:#5d451e}.toolbar{display:flex;flex-wrap:wrap;gap:.5rem;margin:1rem 0}.toast{position:fixed;right:1rem;bottom:1rem;background:#17201d;color:#fff;border-radius:12px;padding:.8rem 1rem;opacity:0;transform:translateY(10px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:none}
+footer{background:#17201d;color:#c7d2cd;padding:3rem 1.2rem}.footer-inner{max-width:1280px;margin:auto;display:flex;justify-content:space-between;gap:2rem}.footer-inner p{max-width:780px;margin:0}.footer-inner a{color:#dff2e9}
+@media(max-width:850px){.hero{grid-template-columns:1fr;padding-top:3rem}.shell{grid-template-columns:1fr}.rail{position:static;display:flex;overflow:auto}.stepbtn{min-width:max-content}.rail-stats{display:none}.grid,.grid3,.dashboard{grid-template-columns:1fr 1fr}.dimension{grid-template-columns:1fr}.footer-inner{display:block}.nav-actions .optional{display:none}}
+@media(max-width:520px){.grid,.grid3,.dashboard{grid-template-columns:1fr}.hero h1{font-size:3rem}.section-head{display:block}.nav-actions button{padding:.55rem .7rem}}
+@media print{header,.rail,.toolbar,.no-print{display:none!important}.shell{display:block;padding:0}.panel{display:block!important;break-inside:avoid}.card{box-shadow:none}.hero{padding:1rem;grid-template-columns:1fr}.hero h1{font-size:2.4rem}}
 </style>
+<script src="/_vercel/insights/script.js" defer></script><script src="/_vercel/speed-insights/script.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"NARCH Spatial Evidence Workbench","applicationCategory":"BusinessApplication","operatingSystem":"Web browser","url":"https://narch-advisory.vercel.app","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
 </head>
 <body>
+<a class="skip" href="#workspace">Skip to workbench</a>
+<header><nav><div class="brand">NARCH<small>SPATIAL EVIDENCE WORKBENCH</small></div><div class="nav-actions"><button class="optional" id="exampleBtn">Load example</button><button class="danger optional" id="resetBtn">Reset</button><button class="primary" data-step="5">Decision packet</button></div></nav></header>
+<section class="hero"><div><div class="eyebrow">From intuition to accountable iteration</div><h1>Design a space you can learn from.</h1><p>Document who a space serves, observe what it affords, frame interventions as testable hypotheses, and leave the project with a measurement plan—not an unsupported promise.</p></div><aside class="boundary"><strong>Professional boundary</strong><p>This workbench supports early inquiry and project governance. It does not establish medical benefit, legal or code compliance, accessibility compliance, architectural or engineering adequacy, or causation. Licensed and qualified professionals retain responsibility.</p></aside></section>
+<main class="shell" id="workspace">
+<aside class="rail" aria-label="Workbench steps">
+<button class="stepbtn active" data-step="0"><span>1</span> Project brief</button><button class="stepbtn" data-step="1"><span>2</span> Spatial scan</button><button class="stepbtn" data-step="2"><span>3</span> Hypotheses</button><button class="stepbtn" data-step="3"><span>4</span> Measurement</button><button class="stepbtn" data-step="4"><span>5</span> Safeguards</button><button class="stepbtn" data-step="5"><span>6</span> Decision packet</button>
+<div class="rail-stats"><b id="savedLabel">Saved locally</b><div class="bar"><i id="progressBar"></i></div><span id="progressText">0% complete</span></div>
+</aside>
+<div>
+<section class="panel active" data-panel="0"><div class="section-head"><div><div class="eyebrow">01 / Context before conclusions</div><h2>Project brief</h2><p>Define the decision, affected people, operating context, and constraints before scoring the space.</p></div></div>
+<div class="card grid">
+<div class="field"><label for="project">Project name</label><input id="project" data-field placeholder="e.g., Community clinic waiting area"></div>
+<div class="field"><label for="spaceType">Space type</label><select id="spaceType" data-field><option value="">Choose one</option><option>Workplace</option><option>Healthcare</option><option>Education</option><option>Civic / public</option><option>Residential</option><option>Hospitality</option><option>Mixed use</option><option>Other</option></select></div>
+<div class="field"><label for="stage">Decision stage</label><select id="stage" data-field><option>Existing space / post-occupancy</option><option>Programming</option><option>Concept design</option><option>Design development</option><option>Renovation planning</option></select></div>
+<div class="field"><label for="owner">Decision owner</label><input id="owner" data-field placeholder="Role or accountable team"></div>
+<div class="field wide"><label for="users">Who uses this space?</label><textarea id="users" data-field placeholder="Include staff, visitors, children, older adults, disabled people, neurodivergent people, shift workers, caregivers, and others whose experience may differ."></textarea></div>
+<div class="field"><label for="goal">Decision to make</label><textarea id="goal" data-field placeholder="What decision must this assessment inform?"></textarea></div>
+<div class="field"><label for="constraints">Known constraints</label><textarea id="constraints" data-field placeholder="Budget, schedule, lease, infection control, heritage, operations, maintenance..."></textarea></div>
+<div class="field wide"><label for="success">Observable success</label><textarea id="success" data-field placeholder="Describe what people would be able to do more safely, comfortably, independently, or effectively. Avoid diagnosing internal states."></textarea><span class="hint">Prefer observable behavior and user-reported experience over biological claims.</span></div>
+</div><div class="toolbar"><button class="primary" data-next>Continue to spatial scan →</button></div></section>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="nav-brand">NARCH</a>
-    <a href="https://nsag-site.vercel.app" class="nav-back">&#8592; NSAG</a>
-  </nav>
-<div style="background:#FFF8E7;border-left:4px solid #B8842A;padding:12px 16px;margin-bottom:24px;font-size:13px;color:#5A4000;border-radius:0 4px 4px 0;">
-  <strong>Note:</strong> This tool is for informational purposes only and does not constitute legal advice. Consult a qualified legal professional before making decisions.
-</div>
+<section class="panel" data-panel="1"><div class="section-head"><div><div class="eyebrow">02 / Structured observation</div><h2>Spatial scan</h2><p>Rate observed conditions, then note whose experience might not be represented. Scores organize inquiry; they are not clinical or compliance determinations.</p></div><div class="chip" id="avgChip">Average —</div></div>
+<div class="card" id="dimensions"></div>
+<div class="card grid"><div class="field"><label for="walkthrough">Walkthrough notes</label><textarea id="walkthrough" data-field placeholder="Time, conditions, routes observed, bottlenecks, coping behaviors, conflicting uses..."></textarea></div><div class="field"><label for="missingVoices">Missing voices / uncertainty</label><textarea id="missingVoices" data-field placeholder="Who was not consulted? What conditions were not observed? What assumptions need checking?"></textarea></div></div>
+<div class="toolbar"><button data-prev>← Back</button><button class="primary" data-next>Build hypotheses →</button></div></section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <span class="section-label">Neuroarchitecture Advisory</span>
-      <h1>The Built Environment Is Governance.</h1>
-      <p class="hero-sub">Physical space determines what is cognitively and physiologically possible within it. Most architecture firms know this intuitively. Almost none have a framework for making it evidential — usable in client presentations, grant filings, and public approvals.</p>
-      <a class="btn btn-white" href="https://outlook.office.com/bookwithme/user/3ff7c8299177431a8fc2b099238c5e43@northeastern.edu?anonymous&ismsaljsauthenabled&ep=plink" target="_blank" rel="noopener">Book a Discovery Call</a>
-    </div>
-  </section>
+<section class="panel" data-panel="2"><div class="section-head"><div><div class="eyebrow">03 / Make claims testable</div><h2>Intervention hypotheses</h2><p>Separate the proposed change, expected mechanism, evidence confidence, constraints, and owner.</p></div></div>
+<div class="card grid3">
+<div class="field"><label for="hTitle">Proposed intervention</label><input id="hTitle" placeholder="e.g., Add low-stimulation waiting zone"></div>
+<div class="field"><label for="hArea">Domain</label><select id="hArea"><option>Light & temporal cues</option><option>Acoustics</option><option>Air & thermal comfort</option><option>Wayfinding & legibility</option><option>Agency & control</option><option>Accessibility & inclusion</option><option>Nature contact</option><option>Social / privacy balance</option></select></div>
+<div class="field"><label for="hEvidence">Evidence confidence</label><select id="hEvidence"><option value="3">Higher — multiple applicable sources</option><option value="2">Moderate — related evidence / local support</option><option value="1">Exploratory — plausible but uncertain</option></select></div>
+<div class="field wide"><label for="hStatement">Testable hypothesis</label><textarea id="hStatement" placeholder="If we change X for Y users, then observable outcome Z may improve under these conditions..."></textarea></div>
+<div class="field"><label for="hImpact">Expected impact (1–5)</label><input type="number" min="1" max="5" value="3" id="hImpact"></div>
+<div class="field"><label for="hEffort">Effort / disruption (1–5)</label><input type="number" min="1" max="5" value="3" id="hEffort"></div>
+<div class="field"><label for="hOwner">Accountable owner</label><input id="hOwner" placeholder="Role / team"></div>
+<div class="field wide"><label for="hCaveat">Constraints, harms, or contraindications</label><textarea id="hCaveat" placeholder="Maintenance, sensory conflicts, infection control, glare, allergens, privacy, displacement, unequal access..."></textarea></div>
+<div class="wide"><button class="primary" id="addHypothesis">Add hypothesis</button></div></div>
+<div id="hypothesisList"></div><div class="toolbar"><button data-prev>← Back</button><button class="primary" data-next>Plan measurement →</button></div></section>
 
-  <!-- ABOUT -->
-  <section class="about-section">
-    <div class="section-inner">
-      <span class="section-label">About</span>
-      <h2>Six Hundred Studies. One Usable Framework.</h2>
-      <p>Six hundred studies confirm what architects already sense: the built environment is not a neutral backdrop for human activity. It regulates stress, cognition, healing, productivity, and social cohesion at the biological level. NARCH makes that evidence usable.</p>
-      <p>The Biophilic Evidence Audit grounds specific design interventions in peer-reviewed neuroscience and environmental psychology research. The output is a document your team can put in front of a client, a grant committee, or a public planning board — with citations.</p>
-      <p>NARCH operates at the intersection of NSAG's M5 (Biophilic Civic Infrastructure), M7 (Conscious Cities), and M10 (Healthcare Built Environment) — three modules that represent a combined governance opportunity across municipal planning, healthcare architecture, and civic design.</p>
-    </div>
-  </section>
+<section class="panel" data-panel="3"><div class="section-head"><div><div class="eyebrow">04 / Learn after implementation</div><h2>Measurement plan</h2><p>Pair baseline, outcome, feedback, and unintended-effect measures. Decide in advance what would change the decision.</p></div></div>
+<div class="card grid">
+<div class="field"><label for="baseline">Baseline</label><textarea id="baseline" data-field placeholder="Current observation, counts, task time, incident or complaint pattern, environmental readings, survey baseline..."></textarea></div>
+<div class="field"><label for="outcome">Primary outcome</label><textarea id="outcome" data-field placeholder="A behavior, operational result, accessibility outcome, or user-reported experience tied to the decision."></textarea></div>
+<div class="field"><label for="qualitative">Lived-experience feedback</label><textarea id="qualitative" data-field placeholder="How and when will affected groups participate? Include accessible feedback formats."></textarea></div>
+<div class="field"><label for="unintended">Unintended effects / equity check</label><textarea id="unintended" data-field placeholder="What could improve for one group while worsening for another? What burdens shift?"></textarea></div>
+<div class="field"><label for="timeline">Evaluation timing</label><select id="timeline" data-field><option>2–4 weeks after change</option><option>6–8 weeks after change</option><option>3 months after change</option><option>6 months after change</option><option>Seasonal / repeated measures</option></select></div>
+<div class="field"><label for="threshold">Decision threshold</label><textarea id="threshold" data-field placeholder="What result supports adoption, revision, rollback, or more study?"></textarea></div>
+</div><div class="notice"><b>Avoid surveillance by default.</b> Use the least intrusive measure that answers the question, minimize personal data, obtain appropriate consent, and define retention and access before collection.</div>
+<div class="toolbar"><button data-prev>← Back</button><button class="primary" data-next>Review safeguards →</button></div></section>
 
-  <!-- OFFER -->
-  <section class="offer-section">
-    <div class="section-inner">
-      <span class="section-label">The Engagement</span>
-      <h2>The Biophilic Evidence Audit</h2>
-      <p class="offer-description">A 20-page evidence brief grounding your specific design interventions in peer-reviewed neuroscience and environmental psychology, with citations usable in client presentations, grant applications, and public filings.</p>
+<section class="panel" data-panel="4"><div class="section-head"><div><div class="eyebrow">05 / Responsibility map</div><h2>Safeguards and professional review</h2><p>Identify required reviews and residual uncertainty before a recommendation advances.</p></div></div>
+<div class="card" id="checks"></div>
+<div class="card grid"><div class="field"><label for="reviewers">Named reviewers / disciplines</label><textarea id="reviewers" data-field placeholder="Architect, engineer, accessibility specialist, facilities, infection prevention, clinical lead, community representatives..."></textarea></div><div class="field"><label for="risks">Open risks and dependencies</label><textarea id="risks" data-field placeholder="Approvals, technical validation, costs, maintenance, procurement, data governance, conflicting requirements..."></textarea></div></div>
+<div class="toolbar"><button data-prev>← Back</button><button class="primary" data-next>Generate decision packet →</button></div></section>
 
-      <table class="pricing-table">
-        <thead>
-          <tr>
-            <th>Engagement</th>
-            <th>Investment</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="tier-name">Single Project Evidence Brief</td>
-            <td class="tier-price">$3,500</td>
-          </tr>
-          <tr>
-            <td class="tier-name">Evidence Brief + 2-hr Design Advisory</td>
-            <td class="tier-price">$5,500</td>
-          </tr>
-          <tr>
-            <td class="tier-name">Ongoing Research Partner (1 project/quarter)</td>
-            <td class="tier-price">$2,000 / month</td>
-          </tr>
-          <tr>
-            <td class="tier-name">Firm Workshop (half-day, up to 12 staff)</td>
-            <td class="tier-price">$5,000</td>
-          </tr>
-          <tr>
-            <td class="tier-name">Annual Research Partner (up to 4 projects)</td>
-            <td class="tier-price">$20,000 / year</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <a class="btn btn-brand" href="https://outlook.office.com/bookwithme/user/3ff7c8299177431a8fc2b099238c5e43@northeastern.edu?anonymous&ismsaljsauthenabled&ep=plink" target="_blank" rel="noopener">Book a Discovery Call</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-inner">
-      <p class="footer-brand">NARCH</p>
-      <p>NARCH is an NSAG applied brand. <a href="https://nsag-site.vercel.app" target="_blank" rel="noopener">nsag-site.vercel.app</a> &middot; RN Collins, M.S. Anatomy &amp; Neurobiology (Boston University), J.D. Candidate (Northeastern)</p>
-    </div>
-  </footer>
-
-
-<section style="padding:5rem 2rem;border-top:2px solid #1B7A68;background:#fff">
-  <div style="max-width:820px;margin:0 auto">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Framework Architecture</p>
-    <h2 style="font-size:1.8rem;font-weight:700;margin:0 0 .75rem">How NARCH Applies the NSAG Framework</h2>
-    <p style="color:#555;margin:0 0 1rem;line-height:1.7;max-width:640px">NARCH is the NSAG framework applied to the built environment. The Biophilic Evidence Audit is the six-dimension assessment that makes architectural design decisions auditable — in client presentations, grant filings, and public approvals. NARCH operates at the intersection of NSAG modules M5 (Biophilic Civic Infrastructure), M7 (Conscious Cities), and M10 (Healthcare Built Environment).</p>
-    <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:3rem">
-      <a href="https://nsag-site.vercel.app/#modules" style="display:inline-block;background:#f0f9f6;color:#1B7A68;border:1.5px solid #1B7A68;border-radius:2px;padding:.25rem .7rem;font-size:.75rem;font-weight:600;text-decoration:none;letter-spacing:.04em">M5 · Biophilic Civic Infrastructure</a><a href="https://nsag-site.vercel.app/#modules" style="display:inline-block;background:#f0f9f6;color:#1B7A68;border:1.5px solid #1B7A68;border-radius:2px;padding:.25rem .7rem;font-size:.75rem;font-weight:600;text-decoration:none;letter-spacing:.04em">M7 · Conscious Cities</a><a href="https://nsag-site.vercel.app/#modules" style="display:inline-block;background:#f0f9f6;color:#1B7A68;border:1.5px solid #1B7A68;border-radius:2px;padding:.25rem .7rem;font-size:.75rem;font-weight:600;text-decoration:none;letter-spacing:.04em">M10 · Healthcare Built Environment</a>
-    </div>
-
-    <h3 style="font-size:1rem;font-weight:700;margin:0 0 1.25rem;letter-spacing:.04em">The Six Assessment Dimensions</h3>
-    <p style="color:#666;font-size:.88rem;margin:0 0 1.75rem;line-height:1.6">Every NSAG assessment has six dimensions — specific, observable, documentable governance criteria. For NARCH, those six dimensions are:</p>
-    <div style="display:grid;gap:1rem;margin-bottom:3.5rem">
-      
-<div style="border:1.5px solid #e8e4e0;border-radius:4px;padding:1.5rem">
-  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-    <span style="font-family:'Courier New',monospace;font-size:.75rem;font-weight:700;color:#1B7A68;background:#f0f9f6;padding:.2rem .5rem;border-radius:2px">D1</span>
-    <p style="font-weight:700;margin:0;font-size:.92rem">Evidence Documentation Standards</p>
-  </div>
-  <p style="color:#555;font-size:.85rem;margin:0 0 .5rem;line-height:1.6">Does the organization maintain citable, primary-source evidence documentation for specific design decisions? Can a design rationale be handed to a client, grant reviewer, or regulatory body with citations that can be verified?</p>
-  <p style="color:#888;font-size:.8rem;margin:0;font-style:italic">Why it matters: Most architecture firms know what the research says in general. Almost none have a document that links a specific design intervention to a specific study with a specific evidence grade. That document is what makes the decision auditable.</p>
-</div>
-<div style="border:1.5px solid #e8e4e0;border-radius:4px;padding:1.5rem">
-  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-    <span style="font-family:'Courier New',monospace;font-size:.75rem;font-weight:700;color:#1B7A68;background:#f0f9f6;padding:.2rem .5rem;border-radius:2px">D2</span>
-    <p style="font-weight:700;margin:0;font-size:.92rem">Biophilic Design Integration</p>
-  </div>
-  <p style="color:#555;font-size:.85rem;margin:0 0 .5rem;line-height:1.6">What is the density and distribution of biophilic elements across three categories: direct (living plants, water features, natural light access), indirect (natural materials, organic patterns, nature imagery), and spatial (refuge spaces, prospect views, transition areas)?</p>
-  <p style="color:#888;font-size:.8rem;margin:0;font-style:italic">Why it matters: Biophilic design is not one thing. Direct, indirect, and spatial elements have distinct evidence bases and distinct nervous system effects. An assessment that treats them as a single category misses the governance-relevant distinctions.</p>
-</div>
-<div style="border:1.5px solid #e8e4e0;border-radius:4px;padding:1.5rem">
-  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-    <span style="font-family:'Courier New',monospace;font-size:.75rem;font-weight:700;color:#1B7A68;background:#f0f9f6;padding:.2rem .5rem;border-radius:2px">D3</span>
-    <p style="font-weight:700;margin:0;font-size:.92rem">Acoustic and Sensory Environment Governance</p>
-  </div>
-  <p style="color:#555;font-size:.85rem;margin:0 0 .5rem;line-height:1.6">Are acoustic stressors — noise, reverberation, speech intelligibility — assessed and governed through documented design criteria? Are sensory inputs (light spectrum, thermal range, air quality) treated as design variables with evidence-based targets?</p>
-  <p style="color:#888;font-size:.8rem;margin:0;font-style:italic">Why it matters: Acoustic exposure is among the most well-evidenced built environment stressors. Hospital noise at night causes measurable sleep disruption and cardiovascular stress. Workplaces with uncontrolled background noise show measurable working memory impairment. These are governance variables, not aesthetic preferences.</p>
-</div>
-<div style="border:1.5px solid #e8e4e0;border-radius:4px;padding:1.5rem">
-  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-    <span style="font-family:'Courier New',monospace;font-size:.75rem;font-weight:700;color:#1B7A68;background:#f0f9f6;padding:.2rem .5rem;border-radius:2px">D4</span>
-    <p style="font-weight:700;margin:0;font-size:.92rem">Post-Occupancy Evaluation Framework</p>
-  </div>
-  <p style="color:#555;font-size:.85rem;margin:0 0 .5rem;line-height:1.6">Does the organization have a structured framework for measuring whether a completed space is producing its intended cognitive, physiological, and behavioral effects? Are baseline and post-occupancy assessments built into the engagement model?</p>
-  <p style="color:#888;font-size:.8rem;margin:0;font-style:italic">Why it matters: A biophilic design claim without a post-occupancy evaluation is an unverified hypothesis. Governance requires measurement. Most evidence-based design work ends at certificate of occupancy. NARCH assessments close this loop.</p>
-</div>
-<div style="border:1.5px solid #e8e4e0;border-radius:4px;padding:1.5rem">
-  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-    <span style="font-family:'Courier New',monospace;font-size:.75rem;font-weight:700;color:#1B7A68;background:#f0f9f6;padding:.2rem .5rem;border-radius:2px">D5</span>
-    <p style="font-weight:700;margin:0;font-size:.92rem">Equity and Access Assessment</p>
-  </div>
-  <p style="color:#555;font-size:.85rem;margin:0 0 .5rem;line-height:1.6">Who has access to the biophilic and sensory benefits designed into the space? Are the evidence-supported design elements concentrated in executive and public-facing areas while production, service, and administrative spaces receive standard treatment?</p>
-  <p style="color:#888;font-size:.8rem;margin:0;font-style:italic">Why it matters: Biophilic equity is a documented governance problem. The research on nature access and health outcomes has a clear equity dimension: access to green space, natural light, and acoustic quality correlates with socioeconomic status in ways the built environment can either reinforce or interrupt.</p>
-</div>
-<div style="border:1.5px solid #e8e4e0;border-radius:4px;padding:1.5rem">
-  <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.75rem">
-    <span style="font-family:'Courier New',monospace;font-size:.75rem;font-weight:700;color:#1B7A68;background:#f0f9f6;padding:.2rem .5rem;border-radius:2px">D6</span>
-    <p style="font-weight:700;margin:0;font-size:.92rem">Grant and Approval Documentation Standards</p>
-  </div>
-  <p style="color:#555;font-size:.85rem;margin:0 0 .5rem;line-height:1.6">Can the organization produce evidence documentation in formats usable for grant applications, public approval processes, and regulatory filings? Are evidence briefs structured for audiences who are not design professionals?</p>
-  <p style="color:#888;font-size:.8rem;margin:0;font-style:italic">Why it matters: The audience for evidence documentation is not always a client. Grants, planning approvals, and healthcare accreditation processes require evidence at a different register. NARCH assessments produce documentation that works across all three contexts.</p>
-</div>
-    </div>
-
-    <h3 style="font-size:1rem;font-weight:700;margin:0 0 1.25rem;letter-spacing:.04em">NSAG Principles in This Domain</h3>
-    <p style="color:#666;font-size:.88rem;margin:0 0 1.25rem;line-height:1.6">The Biophilic Evidence Audit is not a standalone product — it deploys specific NSAG principles that shape every dimension of the assessment.</p>
-    <div style="margin-bottom:3rem"><div style="padding:.75rem 0;border-bottom:1px solid #eee;display:flex;gap:1rem"><span style="font-family:'Courier New',monospace;font-size:.75rem;color:#1B7A68;font-weight:700;flex-shrink:0;padding-top:.1rem">P5</span><div><p style="font-weight:600;margin:0 0 .2rem;font-size:.88rem">The built environment is governance.</p><p style="color:#666;font-size:.82rem;margin:0;line-height:1.5">This is NARCH's foundational claim, stated as a universal principle. Physical space, acoustics, lighting, and nature access determine what is cognitively and physiologically possible. NARCH makes this principle actionable — auditable, documented, and defensible.</p></div></div><div style="padding:.75rem 0;border-bottom:1px solid #eee;display:flex;gap:1rem"><span style="font-family:'Courier New',monospace;font-size:.75rem;color:#1B7A68;font-weight:700;flex-shrink:0;padding-top:.1rem">P8</span><div><p style="font-weight:600;margin:0 0 .2rem;font-size:.88rem">Cognitive load is a design variable the system controls.</p><p style="color:#666;font-size:.82rem;margin:0;line-height:1.5">Wayfinding complexity, decision density, spatial ambiguity — these are design variables that produce measurable cognitive load effects. When patients fail to navigate healthcare environments, the environment has often created the conditions for that failure.</p></div></div><div style="padding:.75rem 0;border-bottom:1px solid #eee;display:flex;gap:1rem"><span style="font-family:'Courier New',monospace;font-size:.75rem;color:#1B7A68;font-weight:700;flex-shrink:0;padding-top:.1rem">P15</span><div><p style="font-weight:600;margin:0 0 .2rem;font-size:.88rem">What institutions cannot see, they cannot govern.</p><p style="color:#666;font-size:.82rem;margin:0;line-height:1.5">The visibility gap in built environment governance is the gap between what a design is intended to produce and what it is actually producing. Post-occupancy evaluation is the measurement infrastructure that closes this gap.</p></div></div><div style="padding:.75rem 0;border-bottom:1px solid #eee;display:flex;gap:1rem"><span style="font-family:'Courier New',monospace;font-size:.75rem;color:#1B7A68;font-weight:700;flex-shrink:0;padding-top:.1rem">P16</span><div><p style="font-weight:600;margin:0 0 .2rem;font-size:.88rem">Evidence without governance is inert.</p><p style="color:#666;font-size:.82rem;margin:0;line-height:1.5">Six hundred studies exist on the nervous system effects of the built environment. Most architecture firms cannot access them, interpret them, or translate them into client-facing documentation. NARCH is the governance layer that makes that evidence usable.</p></div></div></div>
-
-    <div style="background:#f9f7f4;border-left:3px solid #1B7A68;padding:1.5rem;border-radius:0 4px 4px 0">
-      <p style="font-weight:700;margin:0 0 .5rem;font-size:.9rem">What makes this NSAG Applied, not just advisory</p>
-      <p style="color:#555;font-size:.85rem;margin:0;line-height:1.7">NSAG Applied means the engagement is structured around the six-dimension framework, delivers a scored assessment against observable governance criteria, and produces a gap analysis referenced to primary research — not a list of recommendations. The framework is the accountability layer. The deliverable is a governance document, not a report.</p>
-    </div>
-  </div>
-</section>
-<section style="background:#f9f7f4;padding:5rem 2rem;border-top:2px solid #1B7A68">
-  <div style="max-width:680px;margin:0 auto">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Free Diagnostic</p>
-    <h2 style="font-size:1.8rem;font-weight:700;margin:0 0 .75rem">Readiness Assessment</h2>
-    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Five questions. Instant result. No email required.</p>
-    <div id="rd-quiz-narch">
-      <div id="rd-questions-narch"></div>
-      <button id="rd-submit-narch" onclick="rdSubmit_narch()" style="display:none;background:#1B7A68;color:#fff;border:none;padding:.75rem 2rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;border-radius:2px;margin-top:1.5rem">Get My Score</button>
-    </div>
-  </div>
-</section>
+<section class="panel" data-panel="5"><div class="section-head"><div><div class="eyebrow">06 / Traceable handoff</div><h2>Decision packet</h2><p>A living summary of context, observations, priorities, uncertainties, measurement, and professional sign-offs.</p></div></div>
+<div class="dashboard"><div class="metric"><b id="mScore">—</b><span>Spatial scan / 5</span></div><div class="metric"><b id="mHyp">0</b><span>Hypotheses</span></div><div class="metric"><b id="mReady">0</b><span>Safeguards checked</span></div><div class="metric"><b id="mComplete">0%</b><span>Packet complete</span></div></div>
+<div class="toolbar"><button class="primary" id="downloadMd">Download Markdown</button><button id="downloadCsv">Priority CSV</button><button id="downloadJson">Project JSON</button><button onclick="window.print()">Print / PDF</button></div>
+<div id="packet"></div>
+<div class="toolbar"><button data-prev>← Back</button><a class="btn" href="https://outlook.office.com/bookwithme/user/3ff7c8299177431a8fc2b099238c5e43@northeastern.edu?anonymous&ismsaljsauthenabled&ep=plink" target="_blank" rel="noopener">Discuss professional advisory ↗</a></div></section>
+</div></main>
+<footer><div class="footer-inner"><p><b>NARCH Spatial Evidence Workbench</b><br>Local-first project structuring for accountable spatial decisions. Your entries remain in this browser unless you export them. Version 2.0 · August 2026.</p><p><a href="/privacy">Privacy</a> · <a href="/terms">Terms & boundaries</a> · <a href="https://nsag-site.vercel.app" rel="noopener">NSAG</a></p></div></footer><div class="toast" id="toast" role="status"></div>
 <script>
-(function() {
-  var qs = [{"q": "Does your organization document the cognitive and physiological rationale for design decisions in client-facing materials?", "opts": [{"label": "No \u2014 we rely on intuition and precedent", "score": 0}, {"label": "Sometimes \u2014 for specific project types", "score": 1}, {"label": "Yes \u2014 we have an evidence documentation process", "score": 2}]}, {"q": "Can your team cite primary research when a client or regulator asks why a specific design choice was made?", "opts": [{"label": "Not typically \u2014 we reference general best practices", "score": 0}, {"label": "For some decisions, yes", "score": 1}, {"label": "Yes \u2014 we maintain a referenced design rationale", "score": 2}]}, {"q": "How does your organization assess whether a completed space produces its intended cognitive or physiological effects?", "opts": [{"label": "We don't \u2014 occupant satisfaction surveys at most", "score": 0}, {"label": "Informally, through post-occupancy feedback", "score": 1}, {"label": "Through a structured post-occupancy evaluation with measurable outcomes", "score": 2}]}, {"q": "When preparing grant applications or public approvals, how do you substantiate claims about the built environment's effects?", "opts": [{"label": "General references to wellbeing and design quality", "score": 0}, {"label": "Selected research citations, not systematically compiled", "score": 1}, {"label": "A documented evidence brief with graded citations", "score": 2}]}, {"q": "Does your firm have a framework for distinguishing evidence-based design claims from design preferences?", "opts": [{"label": "No formal distinction", "score": 0}, {"label": "Informal \u2014 individual designers make this judgment", "score": 1}, {"label": "Yes \u2014 documented criteria applied consistently", "score": 2}]}];
-  var answers_narch = {};
-  var container = document.getElementById('rd-questions-narch');
-  if (!container) return;
-  qs.forEach(function(q, i) {
-    var div = document.createElement('div');
-    div.style.cssText = 'margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid #ddd';
-    div.innerHTML = '<p style="font-weight:600;margin:0 0 1rem">' + (i+1) + '. ' + q.q + '</p>' +
-      q.opts.map(function(o, j) {
-        return '<label style="display:block;padding:.6rem .8rem;margin-bottom:.4rem;border:1.5px solid #ddd;border-radius:3px;cursor:pointer;font-size:.88rem"><input type="radio" name="qnarch'+i+'" value="'+j+'" style="margin-right:.6rem" onchange="rdAns_narch('+i+','+o.score+')"> '+o.label+'</label>';
-      }).join('');
-    container.appendChild(div);
-  });
-  document.getElementById('rd-submit-narch').style.display = 'block';
-})();
-
-window.rdAns_narch = function(qi, score) { rdAnswers_narch[qi] = score; };
-var rdAnswers_narch = {};
-
-window.rdSubmit_narch = function() {
-  var total = 0, answered = 0;
-  for (var k in rdAnswers_narch) { total += rdAnswers_narch[k]; answered++; }
-  if (answered < 5) { alert('Please answer all 5 questions.'); return; }
-  var pct = Math.round((total / 10) * 100);
-  var level = pct >= 80 ? 'Advanced' : pct >= 50 ? 'Developing' : 'Early Stage';
-  var color = pct >= 80 ? '#1B7A68' : pct >= 50 ? '#B8842A' : '#c0392b';
-  var msgs = {
-    high: 'Your NARCH governance is evidence-aware. The opportunity is systematizing what you already know intuitively into a documented, transferable framework.',
-    mid: 'You have foundational awareness but governance decisions are likely still being made on intuition. The gap between knowing and evidencing is where NSAG work lives.',
-    low: 'Most NARCH organizations score here. Governance decisions affecting the nervous system are being made without a framework for identifying, measuring, or communicating their effects.'
-  };
-  var msg = pct >= 80 ? msgs.high : pct >= 50 ? msgs.mid : msgs.low;
-  document.getElementById('rd-quiz-narch').innerHTML =
-    '<div style="text-align:center;padding:2rem">' +
-    '<div style="font-size:3rem;font-weight:800;color:'+color+'">'+pct+'%</div>' +
-    '<p style="font-size:1.1rem;font-weight:600;margin:.5rem 0;color:'+color+'">'+level+'</p>' +
-    '<p style="color:#555;line-height:1.7;max-width:520px;margin:1rem auto">'+msg+'</p>' +
-    '<button type="button" onclick="document.getElementById(\'ca-modal-narch-advisory\').style.display=\'flex\'" style="display:inline-block;margin-top:1.5rem;background:#1B7A68;color:#fff;border:none;text-decoration:none;padding:.65rem 1.5rem;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;border-radius:2px;cursor:pointer">Get the Full Report</button>' +
-    '</div>';
-};
-</script>
-<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
-  <div style="max-width:780px;margin:0 auto">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Signal vs. Noise</p>
-    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 1rem">What Is Worth Paying Attention To</h2>
-    <p style="font-size:.78rem;color:#888;margin:0 0 2rem">Evidence sources current as of August 2026 — the underlying literature is reviewed periodically, not continuously.</p>
-    <div style="display:grid;gap:1.25rem"><div style="border-left:3px solid #1B7A68;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">Signal</p><p style="font-weight:600;margin:0 0 .3rem">Biophilic design outcome studies in hospital settings (2018-2024)</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">The most rigorous evidence for nervous-system effects of built environments comes from healthcare — window views, natural light, acoustic design, and wayfinding clarity all have measurable outcome data applicable to non-healthcare contexts with appropriate translation. Primary sources: HERD, Health Environments Research and Design Journal.</p></div><div style="border-left:3px solid #1B7A68;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">Signal</p><p style="font-weight:600;margin:0 0 .3rem">GSA post-occupancy evaluation standards for federal buildings</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">The U.S. General Services Administration has developed post-occupancy evaluation frameworks that operationalize the connection between space and cognitive/physiological outcomes in ways that translate directly to evidence documentation for design rationale. Primary source: GSA PBS-P100 Facilities Standards.</p></div><div style="border-left:3px solid #c0392b;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Noise</p><p style="font-weight:600;margin:0 0 .3rem">Biophilic design trend reports from furniture and materials vendors</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">These documents cite real research but selection-bias the evidence toward findings that favor their product categories. The underlying studies are often credible; the curation is not neutral. Read the primary sources directly.</p></div><div style="border-left:3px solid #c0392b;padding-left:1.25rem"><p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Noise</p><p style="font-weight:600;margin:0 0 .3rem">Wellness certifications as evidence of outcome</p><p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">LEED, WELL, and similar certifications measure inputs and features, not nervous system outcomes. Certification is not evidence that the intended biological effects occurred. It is evidence that specified features were installed.</p></div></div>
-  </div>
-</section>
-<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
-  <div style="max-width:780px;margin:0 auto">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Before / After</p>
-    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">What Applying the Framework Looks Like</h2>
-    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Hypothetical examples drawn from real decision types in NARCH.</p>
-    <div style="display:grid;gap:1.5rem">
-<div style="border:1.5px solid #ddd;border-radius:4px;overflow:hidden">
-  <div style="padding:1.25rem;background:#fff4f4;border-bottom:1px solid #ddd">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Before</p>
-    <p style="font-weight:600;margin:0 0 .35rem">Design rationale: Natural light improves wellbeing</p>
-    <p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">A client asks why the firm specified full-spectrum lighting throughout the facility. The answer: natural light improves wellbeing and creates a better work environment. No specific evidence cited. The claim is sincere but unverifiable.</p>
-  </div>
-  <div style="padding:1.25rem;background:#f0f9f6">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">After NSAG Framework</p>
-    <p style="font-weight:600;margin:0 0 .35rem">Evidence-graded rationale with documented sources</p>
-    <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">The same claim is documented with three primary sources: a 2019 HERD study showing 15% reduction in self-reported stress in hospital units with enhanced natural light; a GSA post-occupancy study linking daylight access to a 6% reduction in sick leave; and a 2021 cognitive performance study distinguishing spectrum effects from luminance effects. Confidence grade: B.</p>
-  </div>
-</div>
-<div style="border:1.5px solid #ddd;border-radius:4px;overflow:hidden">
-  <div style="padding:1.25rem;background:#fff4f4;border-bottom:1px solid #ddd">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#c0392b;margin:0 0 .3rem">Before</p>
-    <p style="font-weight:600;margin:0 0 .35rem">Grant application: Evidence-based design approach</p>
-    <p style="color:#666;font-size:.85rem;margin:0;line-height:1.6">A public-sector client asks for evidence supporting the design approach. The firm provides a section titled Evidence-Based Design that cites three books and references decades of research. The grant reviewer cannot verify any specific claim.</p>
-  </div>
-  <div style="padding:1.25rem;background:#f0f9f6">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .3rem">After NSAG Framework</p>
-    <p style="font-weight:600;margin:0 0 .35rem">Citation-graded evidence brief, reviewer-ready</p>
-    <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">The same section now contains five primary studies organized by design element, each with full citation, evidence grade, and a one-sentence annotation explaining relevance to this project. The grant reviewer can verify every citation in under ten minutes.</p>
-  </div>
-</div></div>
-  </div>
-</section>
-<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
-  <div style="max-width:780px;margin:0 auto">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Terminology</p>
-    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">NARCH Glossary</h2>
-    <p style="color:#555;margin:0 0 2.5rem;line-height:1.7">Language used precisely in this domain. These distinctions carry real analytical weight.</p>
-    <div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Cognitive affordance</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">A design feature that actively shapes what cognitive operations are easy, difficult, or impossible in a space. Distinct from aesthetic preference — a cognitive affordance has a measurable effect on attention, working memory, or stress regulation.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Restorative environment</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">A space that reliably reduces attentional fatigue and stress load over time. Defined in Attention Restoration Theory (Kaplan and Kaplan, 1989) with reference to four properties: being away, extent, fascination, and compatibility. Not synonymous with relaxing.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Thermal comfort vs. thermal preference</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">Thermal comfort is an objective measure of the range within which the body maintains homeostasis without active thermoregulation. Thermal preference is subjective. Both matter to design; they are not the same measure and are often conflated in post-occupancy surveys.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Acoustic masking</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">A deliberate introduction of background sound to reduce the intelligibility of distracting speech — distinct from noise reduction and soundproofing. Each has different nervous system effects and different evidence bases.</p></div><div style="padding:1rem 0;border-bottom:1px solid #eee"><p style="font-weight:700;margin:0 0 .3rem">Biophilic density</p><p style="color:#555;font-size:.88rem;margin:0;line-height:1.6">The ratio of nature-referencing elements (direct: living plants, water; indirect: natural patterns, materials; spatial: refuge, prospect) to total square footage. An operational measure for comparing design intensity to outcome expectations in the research literature.</p></div></div>
-  </div>
-</section>
-<section style="background:#1B7A68;color:#fff;padding:4rem 2rem">
-  <div style="max-width:780px;margin:0 auto">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.6);margin:0 0 .75rem">How NSAG Thinks</p>
-    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 1rem;color:#fff">One Framework. Four Domains.</h2>
-    <p style="color:rgba(255,255,255,.85);line-height:1.8;margin:0 0 2rem;max-width:620px">NSAG applies the same underlying question to every domain: <em>What are the nervous system inputs that governance decisions are actually regulating — and does the governing body know it?</em> The answer changes by domain. The method does not.</p>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1rem">
-      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
-        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">NARCH</p>
-        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Built environments govern cognition, stress, and healing at the architectural level</p>
-      </div>
-      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
-        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">WNH</p>
-        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Clinical and policy guidance governs female nervous system inputs, often without knowing it</p>
-      </div>
-      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
-        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">GAPI</p>
-        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">AI agents govern the cognitive and emotional states of every person they interact with</p>
-      </div>
-      <div style="background:rgba(255,255,255,.1);padding:1.25rem;border-radius:4px">
-        <p style="font-weight:700;color:#fff;margin:0 0 .3rem;font-size:.9rem">SPORT</p>
-        <p style="color:rgba(255,255,255,.75);font-size:.82rem;margin:0;line-height:1.5">Sports organizations regulate athlete nervous systems through scheduling, environment, and culture</p>
-      </div>
-    </div>
-  </div>
-</section>
-<section style="padding:5rem 2rem;border-top:1px solid #e8e4e0">
-  <div style="max-width:780px;margin:0 auto">
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Further Reading</p>
-    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">On Natural Materials and the Built Environment</h2>
-    <p style="color:#555;margin:0 0 2rem;line-height:1.7">Reporting from outside NARCH's own client work, on the same underlying question — whether the materials a space is built from affect the nervous systems inside it.</p>
-    <a href="https://www.fatnugsmag.com/how-hempcrete-and-mycelium-composites-are-revolutionizing-architecture/" target="_blank" rel="noopener" style="display:block;border:1.5px solid #e8e4e0;border-left:3px solid #1B7A68;border-radius:0 4px 4px 0;padding:1.25rem;text-decoration:none;color:inherit;margin-bottom:2rem">
-      <p style="font-family:'Courier New',monospace;font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:#1B7A68;margin:0 0 .4rem">Fat Nugs Magazine &middot; RN Collins</p>
-      <p style="font-weight:700;margin:0 0 .3rem;font-size:.92rem">Building With Your Stash: How Cannabis and Mushrooms Are Revolutionizing Architecture with Hempcrete and Mycelium Composites</p>
-      <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">Reporting on hempcrete and mycelium composites as building materials — early evidence that natural, indirect biophilic materials may do more than reduce environmental impact, and may shape how the nervous system responds to a space.</p>
-    </a>
-    <p style="font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:#1B7A68;margin:0 0 .75rem">Related Tools</p>
-    <h2 style="font-size:1.6rem;font-weight:700;margin:0 0 .75rem">Sibling NSAG Applied Sites</h2>
-    <p style="color:#555;margin:0 0 2rem;line-height:1.7">NARCH is one of several NSAG Applied deployments — each takes the same six-dimension governance framework into a different domain.</p>
-    <div style="display:grid;gap:1rem">
-      <a href="https://gapi-governance.vercel.app" target="_blank" rel="noopener" style="display:block;border:1.5px solid #e8e4e0;border-radius:4px;padding:1.25rem;text-decoration:none;color:inherit">
-        <p style="font-weight:700;margin:0 0 .3rem;font-size:.92rem;color:#1B7A68">GAPI — AI Agent Governance Infrastructure &rarr;</p>
-        <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">Applies the NSAG framework to AI agents that govern the cognitive and emotional states of everyone they interact with.</p>
-      </a>
-      <a href="https://sport-nsag.vercel.app" target="_blank" rel="noopener" style="display:block;border:1.5px solid #e8e4e0;border-radius:4px;padding:1.25rem;text-decoration:none;color:inherit">
-        <p style="font-weight:700;margin:0 0 .3rem;font-size:.92rem;color:#1B7A68">SPORT — Nervous-System-Aware Athletic Governance &rarr;</p>
-        <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">The same governance framework applied to how sports organizations regulate athlete nervous systems through scheduling, environment, and culture.</p>
-      </a>
-      <a href="https://wnh-guide.vercel.app" target="_blank" rel="noopener" style="display:block;border:1.5px solid #e8e4e0;border-radius:4px;padding:1.25rem;text-decoration:none;color:inherit">
-        <p style="font-weight:700;margin:0 0 .3rem;font-size:.92rem;color:#1B7A68">WNH — Women's Neuro-Health &rarr;</p>
-        <p style="color:#555;font-size:.85rem;margin:0;line-height:1.6">Primary-source guidance on how clinical and policy decisions govern female nervous system inputs, often without knowing it.</p>
-      </a>
-    </div>
-  </div>
-</section>
-<script>
-(function(){
-  var p=new URLSearchParams(window.location.search);
-  ['utm_source','utm_medium','utm_campaign','utm_term','utm_content'].forEach(function(k){
-    if(p.get(k))sessionStorage.setItem(k,p.get(k));
-  });
-  var t=false;
-  window.addEventListener('scroll',function(){
-    if(!t&&window.scrollY>300){
-      t=true;
-      fetch('/api/track',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({event:'scroll_depth',path:location.pathname,
-          utm_source:sessionStorage.getItem('utm_source')||'',
-          utm_medium:sessionStorage.getItem('utm_medium')||''})});
-    }
-  },{passive:true});
-})();
-</script>
-<!-- Contact the Architect -->
-<button onclick="document.getElementById('ca-modal-narch-advisory').style.display='flex'" style="position:fixed;bottom:24px;right:24px;z-index:999;background:#1a1a1a;color:#fff;border:none;padding:10px 18px;border-radius:24px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.35)">Contact the Architect</button>
-<div id="ca-modal-narch-advisory" style="display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,0.55);align-items:center;justify-content:center;padding:20px" onclick="if(event.target===this)this.style.display='none'">
-  <div style="background:#fff;border-radius:12px;padding:32px;max-width:480px;width:100%;box-shadow:0 8px 32px rgba(0,0,0,0.2)">
-    <h3 style="margin:0 0 16px;font-size:20px;color:#111">Contact the Architect</h3>
-    <form id="ca-form-narch-advisory">
-      <input name="name" placeholder="Name" required style="width:100%;margin-bottom:10px;padding:10px 12px;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;font-size:14px">
-      <input name="email" type="email" placeholder="Email" required style="width:100%;margin-bottom:10px;padding:10px 12px;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;font-size:14px">
-      <textarea name="message" placeholder="Message" rows="4" style="width:100%;margin-bottom:16px;padding:10px 12px;border:1px solid #ddd;border-radius:6px;box-sizing:border-box;font-size:14px;resize:vertical"></textarea>
-      <button type="submit" style="background:#1a1a1a;color:#fff;border:none;padding:10px 24px;border-radius:6px;cursor:pointer;font-size:14px">Send</button>
-      <button type="button" onclick="document.getElementById('ca-modal-narch-advisory').style.display='none'" style="margin-left:8px;background:none;border:1px solid #ccc;color:#333;padding:10px 24px;border-radius:6px;cursor:pointer;font-size:14px">Cancel</button>
-    </form>
-    <script>
-    document.getElementById('ca-form-narch-advisory').addEventListener('submit',function(e){
-      e.preventDefault();
-      var f=e.target;
-      fetch('https://nsag-api.vercel.app/api/lead',{method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({name:f.name.value,email:f.email.value,message:f.message.value,source:'narch-advisory'})
-      }).then(function(){
-        f.reset();
-        document.getElementById('ca-modal-narch-advisory').style.display='none';
-      }).catch(function(){});
-    });
-    </script>
-  </div>
-</div>
-<div style="text-align:center;padding:12px 0;font-size:12px;color:#666;border-top:1px solid #eee;margin-top:24px">Built by <a href="https://aloha-ai-consulting.vercel.app" style="color:#333" target="_blank" rel="noopener">Aloha AI</a>. Explore all AI tools and projects at <a href="https://rn-portfolio-khaki.vercel.app" style="color:#333" target="_blank" rel="noopener">RN Builds</a>.</div>
-</body>
-</html>
+const dims=[
+["light","Light & temporal cues","Daylight access, glare, contrast, electric-light control, time-of-day and seasonal variation."],
+["sound","Acoustics","Speech intelligibility, privacy, reverberation, unpredictable noise, quiet options and hearing access."],
+["thermal","Air & thermal conditions","Perceived air quality, drafts, temperature variation, odor, control and relevant technical readings."],
+["wayfinding","Wayfinding & legibility","Arrival, route choices, landmarks, signage, cognitive load and accessible navigation."],
+["agency","Agency & control","Ability to adjust, choose, pause, retreat, ask for help, or use the space without penalty."],
+["access","Accessibility & inclusion","Physical, sensory, cognitive and communication access across the complete journey."],
+["nature","Nature contact","Views, daylight, outdoor access, living or representational elements, maintenance and cultural fit."],
+["social","Social / privacy balance","Choice across interaction, focus, refuge, confidentiality, crowding and personal space."]
+];
+const safeguards=[
+["architect","Licensed architect review required or completed"],
+["engineering","Relevant structural, MEP, acoustic, lighting, fire/life-safety or other engineering review"],
+["accessibility","Accessibility and inclusive-design review with affected users"],
+["code","Applicable building, fire, zoning and local authority review"],
+["operations","Facilities, maintenance, cleaning, infection-control and operational feasibility review"],
+["privacy","Privacy, consent and data-governance review for measurement"],
+["equity","Distributional impact and community participation review"],
+["evidence","Source applicability, limitations and currentness documented"]
+];
+const blank={fields:{},scores:Object.fromEntries(dims.map(d=>[d[0],3])),notes:Object.fromEntries(dims.map(d=>[d[0],""])),checks:{},hypotheses:[]};
+let state=load(),step=0;
+function load(){try{return Object.assign(structuredClone(blank),JSON.parse(localStorage.getItem("narch-workbench-v2")||"{}"))}catch(e){return structuredClone(blank)}}
+function save(){localStorage.setItem("narch-workbench-v2",JSON.stringify(state));document.getElementById("savedLabel").textContent="Saved locally · "+new Date().toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});progress();renderPacket()}
+function esc(s){return String(s||"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
+function init(){
+ document.getElementById("dimensions").innerHTML=dims.map(d=>'<div class="dimension"><div><h3>'+d[1]+'</h3><p>'+d[2]+'</p><textarea aria-label="'+d[1]+' observation" data-note="'+d[0]+'" placeholder="Observed condition, affected groups, time or location..."></textarea></div><div class="score"><label for="s-'+d[0]+'">Inquiry score</label><input id="s-'+d[0]+'" type="range" min="1" max="5" value="'+state.scores[d[0]]+'" data-score="'+d[0]+'"><span class="score-output" id="o-'+d[0]+'">'+scoreName(state.scores[d[0]])+'</span><span class="hint">1 significant barrier · 5 strong support</span></div></div>').join("");
+ document.getElementById("checks").innerHTML=safeguards.map(c=>'<label class="item" style="display:flex;gap:.7rem;align-items:flex-start"><input style="width:auto;margin-top:.2rem" type="checkbox" data-check="'+c[0]+'"><span><b>'+c[1]+'</b><br><span class="hint">Document status, owner and evidence in open risks or reviewers.</span></span></label>').join("");
+ document.querySelectorAll("[data-field]").forEach(el=>{el.value=state.fields[el.id]||"";el.addEventListener("input",()=>{state.fields[el.id]=el.value;save()})});
+ document.querySelectorAll("[data-note]").forEach(el=>{el.value=state.notes[el.dataset.note]||"";el.addEventListener("input",()=>{state.notes[el.dataset.note]=el.value;save()})});
+ document.querySelectorAll("[data-score]").forEach(el=>el.addEventListener("input",()=>{state.scores[el.dataset.score]=+el.value;document.getElementById("o-"+el.dataset.score).textContent=scoreName(+el.value);save();scanSummary()}));
+ document.querySelectorAll("[data-check]").forEach(el=>{el.checked=!!state.checks[el.dataset.check];el.addEventListener("change",()=>{state.checks[el.dataset.check]=el.checked;save()})});
+ document.querySelectorAll("[data-step]").forEach(b=>b.addEventListener("click",()=>go(+b.dataset.step)));document.querySelectorAll("[data-next]").forEach(b=>b.addEventListener("click",()=>go(Math.min(5,step+1))));document.querySelectorAll("[data-prev]").forEach(b=>b.addEventListener("click",()=>go(Math.max(0,step-1))));
+ document.getElementById("addHypothesis").addEventListener("click",addHyp);document.getElementById("resetBtn").addEventListener("click",reset);document.getElementById("exampleBtn").addEventListener("click",example);
+ document.getElementById("downloadMd").addEventListener("click",()=>download(slug()+".md",markdown(),"text/markdown"));document.getElementById("downloadCsv").addEventListener("click",()=>download(slug()+"-priorities.csv",csv(),"text/csv"));document.getElementById("downloadJson").addEventListener("click",()=>download(slug()+".json",JSON.stringify(state,null,2),"application/json"));
+ renderHyps();scanSummary();progress();renderPacket();
+}
+function scoreName(n){return ["","Significant barrier","Weak support","Mixed / unknown","Generally supportive","Strong support"][n]}
+function go(n){step=n;document.querySelectorAll(".panel").forEach(p=>p.classList.toggle("active",+p.dataset.panel===n));document.querySelectorAll(".stepbtn").forEach(b=>b.classList.toggle("active",+b.dataset.step===n));window.scrollTo({top:document.getElementById("workspace").offsetTop-70,behavior:"smooth"});if(n===5)renderPacket()}
+function scanSummary(){let a=Object.values(state.scores).reduce((x,y)=>x+y,0)/dims.length;document.getElementById("avgChip").textContent="Average "+a.toFixed(1)+" / 5"}
+function addHyp(){let title=document.getElementById("hTitle").value.trim(),statement=document.getElementById("hStatement").value.trim();if(!title||!statement){toast("Add an intervention and testable hypothesis.");return}state.hypotheses.push({id:Date.now(),title,area:val("hArea"),evidence:+val("hEvidence"),statement,impact:clamp(+val("hImpact")),effort:clamp(+val("hEffort")),owner:val("hOwner"),caveat:val("hCaveat")});["hTitle","hStatement","hOwner","hCaveat"].forEach(id=>document.getElementById(id).value="");save();renderHyps();toast("Hypothesis added")}
+function clamp(n){return Math.max(1,Math.min(5,n||3))}function val(id){return document.getElementById(id).value}
+function priority(h){let p=h.impact*2+h.evidence-h.effort;return p>=9?"Act now":p>=6?"Pilot":"Monitor"}
+function renderHyps(){let e=document.getElementById("hypothesisList");if(!state.hypotheses.length){e.innerHTML='<div class="empty">No hypotheses yet. Add a change that can be evaluated.</div>';return}e.innerHTML=state.hypotheses.sort((a,b)=>(b.impact*2+b.evidence-b.effort)-(a.impact*2+a.evidence-a.effort)).map(h=>'<article class="item priority" data-band="'+priority(h)+'"><div class="item-head"><div><h3>'+esc(h.title)+'</h3><p>'+esc(h.statement)+'</p></div><button class="mini danger" onclick="removeHyp('+h.id+')">Remove</button></div><div class="item-meta"><span class="chip">'+esc(h.area)+'</span><span class="chip '+(priority(h)==="Act now"?"risk":priority(h)==="Pilot"?"warn":"good")+'">'+priority(h)+'</span><span class="chip">Impact '+h.impact+'/5</span><span class="chip">Effort '+h.effort+'/5</span><span class="chip">Evidence '+["","exploratory","moderate","higher"][h.evidence]+'</span></div>'+(h.caveat?'<p><b>Constraints / harms:</b> '+esc(h.caveat)+'</p>':"")+'</article>').join("")}
+function removeHyp(id){state.hypotheses=state.hypotheses.filter(h=>h.id!==id);save();renderHyps()}
+function completeness(){let core=["project","users","goal","success","baseline","outcome","threshold","reviewers","risks"],filled=core.filter(k=>(state.fields[k]||"").trim()).length;return Math.round(((filled/core.length)*.55+Math.min(state.hypotheses.length,3)/3*.25+Object.values(state.checks).filter(Boolean).length/safeguards.length*.2)*100)}
+function progress(){let p=completeness();document.getElementById("progressBar").style.width=p+"%";document.getElementById("progressText").textContent=p+"% complete"}
+function renderPacket(){let avg=Object.values(state.scores).reduce((a,b)=>a+b,0)/dims.length,checked=Object.values(state.checks).filter(Boolean).length;document.getElementById("mScore").textContent=avg.toFixed(1);document.getElementById("mHyp").textContent=state.hypotheses.length;document.getElementById("mReady").textContent=checked+"/"+safeguards.length;document.getElementById("mComplete").textContent=completeness()+"%";
+ let low=dims.filter(d=>state.scores[d[0]]<=2), hyps=[...state.hypotheses].sort((a,b)=>(b.impact*2+b.evidence-b.effort)-(a.impact*2+a.evidence-a.effort));
+ document.getElementById("packet").innerHTML='<article class="card"><div class="eyebrow">Project</div><h2>'+esc(state.fields.project||"Untitled spatial inquiry")+'</h2><div class="chips"><span class="chip">'+esc(state.fields.spaceType||"Space type not set")+'</span><span class="chip">'+esc(state.fields.stage||"Stage not set")+'</span><span class="chip">Owner: '+esc(state.fields.owner||"unassigned")+'</span></div><h3>Decision</h3><p>'+esc(state.fields.goal||"Not documented")+'</p><h3>People and success</h3><p><b>People:</b> '+esc(state.fields.users||"Not documented")+'</p><p><b>Observable success:</b> '+esc(state.fields.success||"Not documented")+'</p></article>'+
+ '<article class="card"><div class="eyebrow">Observation flags</div><h2>Conditions requiring inquiry</h2>'+(low.length?'<div class="chips">'+low.map(d=>'<span class="chip risk">'+d[1]+' · '+scoreName(state.scores[d[0]])+'</span>').join("")+'</div>':'<p>No domain is currently scored 1–2. Confirm this across users, conditions and time periods.</p>')+'<p><b>Missing voices / uncertainty:</b> '+esc(state.fields.missingVoices||"Not documented")+'</p></article>'+
+ '<article class="card"><div class="eyebrow">Priorities</div><h2>Intervention hypotheses</h2>'+(hyps.length?hyps.map(h=>'<div class="item priority" data-band="'+priority(h)+'"><h3>'+esc(h.title)+' <span class="chip">'+priority(h)+'</span></h3><p>'+esc(h.statement)+'</p><p><b>Owner:</b> '+esc(h.owner||"unassigned")+' · <b>Evidence:</b> '+["","exploratory","moderate","higher"][h.evidence]+' · <b>Impact / effort:</b> '+h.impact+' / '+h.effort+'</p></div>').join(""):'<p>No interventions documented.</p>')+'</article>'+
+ '<article class="card"><div class="eyebrow">Learning plan</div><h2>Post-occupancy measurement</h2><p><b>Baseline:</b> '+esc(state.fields.baseline||"Not documented")+'</p><p><b>Primary outcome:</b> '+esc(state.fields.outcome||"Not documented")+'</p><p><b>Feedback:</b> '+esc(state.fields.qualitative||"Not documented")+'</p><p><b>Unintended effects:</b> '+esc(state.fields.unintended||"Not documented")+'</p><p><b>Timing / threshold:</b> '+esc(state.fields.timeline||"Not set")+' · '+esc(state.fields.threshold||"Threshold not documented")+'</p></article>'+
+ '<article class="card"><div class="eyebrow">Gate</div><h2>Professional review and residual risk</h2><div class="chips">'+safeguards.map(c=>'<span class="chip '+(state.checks[c[0]]?"good":"warn")+'">'+(state.checks[c[0]]?"✓ ":"○ ")+c[1]+'</span>').join("")+'</div><p><b>Reviewers:</b> '+esc(state.fields.reviewers||"Not documented")+'</p><p><b>Open risks:</b> '+esc(state.fields.risks||"Not documented")+'</p><div class="notice"><b>Boundary:</b> This packet organizes inquiry and accountability. It is not a stamped design, compliance finding, medical recommendation, causal proof, or substitute for qualified professional judgment.</div></article>'}
+function markdown(){let f=state.fields, avg=(Object.values(state.scores).reduce((a,b)=>a+b,0)/dims.length).toFixed(1);return '# NARCH Spatial Decision Packet\n\nGenerated: '+new Date().toISOString()+'\n\n## '+(f.project||"Untitled project")+'\n\n- Space: '+(f.spaceType||"Not set")+'\n- Stage: '+(f.stage||"Not set")+'\n- Owner: '+(f.owner||"Unassigned")+'\n- Scan average: '+avg+'/5\n\n## Decision\n'+(f.goal||"Not documented")+'\n\n## People and observable success\n'+(f.users||"Not documented")+'\n\n'+(f.success||"Not documented")+'\n\n## Spatial scan\n'+dims.map(d=>'- **'+d[1]+':** '+state.scores[d[0]]+'/5 — '+(state.notes[d[0]]||"No note")).join("\n")+'\n\n## Intervention hypotheses\n'+(state.hypotheses.map(h=>'### '+h.title+' ['+priority(h)+']\n'+h.statement+'\n\nOwner: '+(h.owner||"Unassigned")+'; evidence: '+["","exploratory","moderate","higher"][h.evidence]+'; impact '+h.impact+'/5; effort '+h.effort+'/5.\n\nConstraints / harms: '+(h.caveat||"Not documented")).join("\n\n")||"None documented")+'\n\n## Measurement\n- Baseline: '+(f.baseline||"Not documented")+'\n- Primary outcome: '+(f.outcome||"Not documented")+'\n- Feedback: '+(f.qualitative||"Not documented")+'\n- Unintended effects: '+(f.unintended||"Not documented")+'\n- Timing: '+(f.timeline||"Not set")+'\n- Decision threshold: '+(f.threshold||"Not documented")+'\n\n## Safeguards\n'+safeguards.map(c=>'- ['+(state.checks[c[0]]?"x":" ")+'] '+c[1]).join("\n")+'\n\nReviewers: '+(f.reviewers||"Not documented")+'\n\nOpen risks: '+(f.risks||"Not documented")+'\n\n---\nThis packet structures inquiry only. It is not an architectural or engineering instrument, accessibility or code determination, medical recommendation, legal advice, or causal proof.'}
+function csv(){return "priority,intervention,domain,hypothesis,evidence,impact,effort,owner,constraints\n"+state.hypotheses.map(h=>[priority(h),h.title,h.area,h.statement,["","exploratory","moderate","higher"][h.evidence],h.impact,h.effort,h.owner,h.caveat].map(x=>'"'+String(x||"").replaceAll('"','""')+'"').join(",")).join("\n")}
+function slug(){return (state.fields.project||"narch-spatial-decision").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
+function download(name,content,type){let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([content],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)}
+function toast(t){let e=document.getElementById("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),2200)}
+function reset(){if(!confirm("Clear this browser's NARCH project? Export first if you need a copy."))return;state=structuredClone(blank);localStorage.removeItem("narch-workbench-v2");location.reload()}
+function example(){if(Object.keys(state.fields).some(k=>state.fields[k])&&!confirm("Replace the current project with a worked example?"))return;state=structuredClone(blank);state.fields={project:"Community library quiet-zone pilot",spaceType:"Civic / public",stage:"Existing space / post-occupancy",owner:"Library facilities + service design",users:"Students, remote workers, children and caregivers, older adults, patrons using mobility devices, staff, people with sensory sensitivities.",goal:"Decide whether and how to create a low-stimulation quiet zone without reducing access, supervision, or flexible use.",constraints:"Modest pilot budget; no structural work; existing egress and staff sightline requirements; furniture must be cleanable and movable.",success:"More patrons can find and use a lower-stimulation option; fewer noise-conflict reports; no decline in accessible circulation or staff response.",walkthrough:"Observed weekday afternoon and Saturday morning. High speech spillover near group tables; quiet seats lack clear cues; strong glare at west windows after 3pm.",missingVoices:"No evening observation yet. Need direct input from blind/low-vision patrons, Deaf/hard-of-hearing patrons, caregivers, and cleaning staff.",baseline:"Two-week count of noise-related requests by time/location; intercept survey on ability to find a suitable setting; route and turning-space check.",outcome:"Share of surveyed patrons who report they could find a setting suitable for their task, plus count of staff-mediated noise conflicts.",qualitative:"Accessible intercept survey, staff diary, and two facilitated walkthroughs with disabled patrons; participation voluntary.",unintended:"Monitor reduced seating capacity, stigmatizing labels, wheelchair maneuvering, sightline loss, and displacement of youth groups.",timeline:"6–8 weeks after change",threshold:"Adopt if suitable-setting reports improve by at least 15 percentage points with no worsening of access checks or conflict displacement; revise or remove otherwise.",reviewers:"Facilities lead; accessibility consultant; library staff and patron advisory group; fire/life-safety reviewer if layout affects egress.",risks:"Furniture procurement, signage comprehension, west-window glare, consistent enforcement, and equitable access during peak periods."};state.scores={light:2,sound:2,thermal:3,wayfinding:2,agency:2,access:3,nature:3,social:2};state.notes={light:"Late-afternoon glare at west-facing seats; limited local shading.",sound:"Speech spillover across activity zones; no acoustically distinct refuge.",thermal:"No consistent concern observed; verify seasonally.",wayfinding:"Behavior expectations are not visually legible until conflict occurs.",agency:"Few seating choices away from circulation and group activity.",access:"Main route appears clear; pilot furniture requires measured turning and reach review.",nature:"Tree views from some seats but not the quieter interior area.",social:"Group and focused uses compete in one undifferentiated zone."};state.hypotheses=[{id:1,title:"Pilot a legible low-stimulation zone",area:"Social / privacy balance",evidence:2,statement:"If movable acoustic screens, clear behavioral cues, and a choice of seating are piloted in the west reading area, more patrons seeking focused work may find a suitable setting with fewer staff-mediated conflicts.",impact:4,effort:2,owner:"Facilities + branch manager",caveat:"Maintain egress, accessible routes, supervision, cleanability and non-stigmatizing access."},{id:2,title:"Test adjustable glare control",area:"Light & temporal cues",evidence:2,statement:"If user-adjustable solar shades are tested at west-facing tables, late-afternoon seat abandonment associated with glare may decrease without making the area too dim.",impact:3,effort:2,owner:"Facilities",caveat:"Verify visual contrast, maintenance, fire requirements and equitable control."}];state.checks={accessibility:true,operations:true,equity:true,privacy:true};save();location.reload()}
+init();
+</script></body></html>
